@@ -8,12 +8,14 @@ import java.util.function.Function;
 
 public class MinSessionDurationFunction implements Function<List<SleepingSession>, SleepAnalysisResult<?>> {
 
+    private static final String DESCRIPTION = "Минимальная продолжительность сессии (мин)";
+
     @Override
     public SleepAnalysisResult<?> apply(List<SleepingSession> sessions) {
         long minMinutes = sessions.stream()
                 .mapToLong(SleepingSession::getDurationMinutes)
                 .min()
                 .orElse(0);
-        return new SleepAnalysisResult<>("Минимальная продолжительность сессии (мин)", minMinutes);
+        return new SleepAnalysisResult<>(DESCRIPTION, minMinutes);
     }
 }

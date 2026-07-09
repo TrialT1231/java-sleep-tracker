@@ -9,11 +9,13 @@ import java.util.function.Function;
 
 public class BadQualityCountFunction implements Function<List<SleepingSession>, SleepAnalysisResult<?>> {
 
+    private static final String DESCRIPTION = "Количество сессий с плохим качеством сна";
+
     @Override
     public SleepAnalysisResult<?> apply(List<SleepingSession> sessions) {
         long badCount = sessions.stream()
                 .filter(session -> session.getQuality() == SleepQuality.BAD)
                 .count();
-        return new SleepAnalysisResult<>("Количество сессий с плохим качеством сна", badCount);
+        return new SleepAnalysisResult<>(DESCRIPTION, badCount);
     }
 }

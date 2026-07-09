@@ -10,6 +10,7 @@ import java.util.function.Function;
 
 public class ChronotypeFunction implements Function<List<SleepingSession>, SleepAnalysisResult<?>> {
 
+    private static final String DESCRIPTION = "Хронотип пользователя";
     private static final LocalTime LATE_BEDTIME = LocalTime.of(23, 0);
     private static final LocalTime LATE_WAKEUP = LocalTime.of(9, 0);
     private static final LocalTime EARLY_BEDTIME = LocalTime.of(22, 0);
@@ -34,7 +35,7 @@ public class ChronotypeFunction implements Function<List<SleepingSession>, Sleep
             chronotype = Chronotype.DOVE;
         }
 
-        return new SleepAnalysisResult<>("Хронотип пользователя", chronotype);
+        return new SleepAnalysisResult<>(DESCRIPTION, chronotype);
     }
 
     private boolean isNightSession(SleepingSession session) {

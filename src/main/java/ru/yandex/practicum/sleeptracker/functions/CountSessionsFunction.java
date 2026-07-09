@@ -8,9 +8,11 @@ import java.util.function.Function;
 
 public class CountSessionsFunction implements Function<List<SleepingSession>, SleepAnalysisResult<?>> {
 
+    private static final String DESCRIPTION = "Всего сессий сна";
+
     @Override
     public SleepAnalysisResult<?> apply(List<SleepingSession> sessions) {
         int count = sessions.size();
-        return new SleepAnalysisResult<>("Всего сессий сна", count);
+        return new SleepAnalysisResult<>(DESCRIPTION, count);
     }
 }
